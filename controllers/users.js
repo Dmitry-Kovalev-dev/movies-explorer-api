@@ -21,7 +21,7 @@ const UnauthorizedError = require('../errors/UnauthorizedErr');
 
 const getUser = (req, res, next) => {
   const { _id } = req.user;
-  User.find({ _id })
+  User.findById(_id)
     .then((user) => {
       if (!user) {
         throw new NotFoundError(errMessages.userIdNotFound);
@@ -57,9 +57,11 @@ const editUser = (req, res, next) => {
 const createUser = (req, res, next) => {
   const { email, name } = req.body;
   bcrypt.hash(req.body.password, 10)
-    .then((hash) => {
-      User.create({ email, name, password: hash });
-    })
+    .then((hash) => User.create({
+      email,
+      name,
+      password: hash,
+    }))
     .then((user) => {
       res.status(CREATED).send(user);
     })

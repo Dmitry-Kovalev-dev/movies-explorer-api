@@ -5,11 +5,9 @@ const SECRET_KEY = 'secret-key';
 // eslint-disable-next-line no-useless-escape
 const REGEX_URL = /[-a-zA-Z0-9@:%_\+.~#?&\/=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&\/=]*)?/i;
 const errMessages = {
-  cardIdNotFound: 'Карточка с указанным _id не найдена.',
+  movieIdNotFound: 'Фильм с указанным id не найден.',
   userIdNotFound: 'Пользователь с указанным _id не найден',
   idIncorrect: 'Передан некорректный _id',
-  createCardBadReq: 'Переданы некорректные данные при создании карточки',
-  createUserBadReq: 'Переданы некорректные данные при создании пользователя',
   updateUserBadReq: 'Переданы некорректные данные при обновлении данных пользователя',
   unavailable: 'Ошибка доступа',
   emailConflict: 'Пользователь с таким email уже существует',
