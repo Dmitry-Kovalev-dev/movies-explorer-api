@@ -2,12 +2,12 @@ const router = require('express').Router();
 const { login, createUser } = require('../controllers/users');
 const { validateLogin, validateRegister } = require('../utils/validateJoi');
 const auth = require('../middleware/auth');
-// const cors = require('../middleware/cors');
+const cors = require('../middleware/cors');
 const movieRouter = require('./movies');
 const userRouter = require('./users');
 const NotFoundError = require('../errors/NotFoundErr');
 
-// router.use(cors);
+router.use(cors);
 router.post('/signin', validateLogin, login);
 router.post('/signup', validateRegister, createUser);
 router.use(auth);

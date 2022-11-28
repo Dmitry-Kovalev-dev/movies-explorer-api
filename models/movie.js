@@ -63,6 +63,10 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+}, {
+  versionKey: false,
+  toObject: { useProjection: true },
+  toJSON: { useProjection: true },
 });
 
 module.exports = mongoose.model('movie', movieSchema);

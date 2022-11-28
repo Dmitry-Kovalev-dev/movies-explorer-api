@@ -5,7 +5,7 @@ const SECRET_KEY = 'secret-key';
 // eslint-disable-next-line no-useless-escape
 const REGEX_URL = /[-a-zA-Z0-9@:%_\+.~#?&\/=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&\/=]*)?/i;
 const errMessages = {
-  movieIdNotFound: 'Фильм с указанным id не найден.',
+  movieIdNotFound: 'Фильм с указанным id не найден',
   userIdNotFound: 'Пользователь с указанным _id не найден',
   idIncorrect: 'Передан некорректный _id',
   updateUserBadReq: 'Переданы некорректные данные при обновлении данных пользователя',

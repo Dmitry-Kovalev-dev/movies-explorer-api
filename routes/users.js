@@ -1,5 +1,4 @@
 const userRouter = require('express').Router();
-
 const { getUser, editUser, signout } = require('../controllers/users');
 const { validateUpdateUser } = require('../utils/validateJoi');
 

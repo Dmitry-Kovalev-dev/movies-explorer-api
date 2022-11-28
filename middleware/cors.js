@@ -2,8 +2,8 @@ const allowedCors = [
   'localhost:3006',
   'http://localhost:3006',
   'https://localhost:3006',
-  'http://kovalev.nomoredomains.icu',
-  'https://kovalev.nomoredomains.icu',
+  'http://films.nomoredomains.icu',
+  'https://films.nomoredomains.icu',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';

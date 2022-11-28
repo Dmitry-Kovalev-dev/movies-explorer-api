@@ -9,14 +9,12 @@ const router = require('./routes/index');
 const limiter = require('./utils/rateLimit');
 require('dotenv').config();
 
-const { PORT = 3005 } = process.env;
+const { PORT = 3005, MONGO_DB, NODE_ENV } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
+mongoose.connect(NODE_ENV === 'production' ? MONGO_DB : 'mongodb://localhost:27017/bitfilmsdb');
 
-app.listen(PORT, () => {
-  console.log(`Run at ${PORT} PORT`);
-});
+app.listen(PORT, () => {});
 
 app.use(limiter);
 app.use(helmet());

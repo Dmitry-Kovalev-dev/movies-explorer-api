@@ -4,7 +4,6 @@ const ForbiddenError = require('../errors/ForbiddenErr');
 const BadRequestErr = require('../errors/BadRequestErr');
 const Movie = require('../models/movie');
 const { errMessages } = require('../utils/constants');
-// const { errMessages } = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
   const { _id } = req.user;
