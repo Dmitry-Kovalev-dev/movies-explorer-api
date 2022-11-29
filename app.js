@@ -9,14 +9,13 @@ const router = require('./routes/index');
 const limiter = require('./utils/rateLimit');
 require('dotenv').config();
 
-const { PORT = 3005, MONGO_DB, NODE_ENV } = process.env;
+const { PORT = 3005, MONGO_DB = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
 const app = express();
 
-mongoose.connect(NODE_ENV === 'production' ? MONGO_DB : 'mongodb://localhost:27017/bitfilmsdb');
+mongoose.connect(MONGO_DB);
 
 app.listen(PORT, () => {});
 
-app.use(limiter);
 app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
@@ -25,3 +24,4 @@ app.use(router);
 app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
+app.use(limiter);

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { login, createUser } = require('../controllers/users');
-const { validateLogin, validateRegister } = require('../utils/validateJoi');
+const { validateLogin, validateRegister } = require('../utils/JoiValidators/userValid');
 const auth = require('../middleware/auth');
 const cors = require('../middleware/cors');
 const movieRouter = require('./movies');

@@ -3,7 +3,7 @@ const NotFoundError = require('../errors/NotFoundErr');
 const ForbiddenError = require('../errors/ForbiddenErr');
 const BadRequestErr = require('../errors/BadRequestErr');
 const Movie = require('../models/movie');
-const { errMessages } = require('../utils/constants');
+const { errMessages, messages } = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
   const { _id } = req.user;
@@ -11,7 +11,7 @@ const getMovies = (req, res, next) => {
     .then((movies) => {
       res.send(movies);
     })
-    .catch((err) => next(err));
+    .catch(next);
 };
 
 const saveMovie = (req, res, next) => {
@@ -21,25 +21,25 @@ const saveMovie = (req, res, next) => {
     owner: _id,
   })
     .then(() => {
-      res.send('Saved!');
+      res.send({ message: messages.saved });
     })
-    .catch((err) => next(err));
+    .catch(next);
 };
 
 const deleteMovie = (req, res, next) => {
-  const { _id } = req.user;
-  const { id } = req.params;
-  Movie.findById({ id })
+  // const { _id } = req.user;
+  // const { id } = req.params;
+  Movie.findById(req.params._id)
     .then((movie) => {
       if (!movie) {
         throw new NotFoundError(errMessages.movieIdNotFound);
       }
-      if (_id !== movie.owner.toString()) {
+      if (req.user._id !== movie.owner.toString()) {
         throw new ForbiddenError(errMessages.unavailable);
       }
-      Movie.findByIdAndRemove(id)
-        .then(() => res.send({ message: 'Фильм удален из Сохраненных.' }))
-        .catch((err) => next(err));
+      Movie.findByIdAndRemove(req.params._id)
+        .then(() => res.send({ message: messages.deleted }))
+        .catch(next);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {

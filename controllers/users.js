@@ -7,6 +7,7 @@ const {
   SECRET_KEY,
   mongoErrorCode,
   errMessages,
+  messages,
 } = require('../utils/constants');
 
 const {
@@ -48,6 +49,8 @@ const editUser = (req, res, next) => {
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         next(new BadRequestError(errMessages.updateUserBadReq));
+      } else if (err.code === mongoErrorCode) {
+        next(new ConflictError(errMessages.emailConflict));
       } else {
         next(err);
       }
@@ -105,7 +108,7 @@ const login = (req, res, next) => {
 };
 
 const signout = (req, res) => {
-  res.clearCookie('token').send({ message: 'Goodbye' });
+  res.clearCookie('token').send({ message: messages.out });
 };
 
 module.exports = {
