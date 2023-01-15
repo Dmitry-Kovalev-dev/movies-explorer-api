@@ -14,7 +14,9 @@ const app = express();
 
 mongoose.connect(MONGO_DB);
 
-app.listen(PORT, () => {});
+app.listen(PORT, () => {
+  console.log(PORT);
+});
 
 app.use(helmet());
 app.use(limiter);
