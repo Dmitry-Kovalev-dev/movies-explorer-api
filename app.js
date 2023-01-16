@@ -11,7 +11,7 @@ require('dotenv').config();
 
 const { PORT = 3005, MONGO_DB = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
 const app = express();
-
+mongoose.set('strictQuery', false);
 mongoose.connect(MONGO_DB);
 
 app.listen(PORT, () => {
