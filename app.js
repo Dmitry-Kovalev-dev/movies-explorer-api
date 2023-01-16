@@ -12,7 +12,13 @@ require('dotenv').config();
 const { PORT = 3005, MONGO_DB = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
 const app = express();
 mongoose.set('strictQuery', false);
-mongoose.connect(MONGO_DB);
+mongoose.connect(MONGO_DB, (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('db is connected');
+  }
+});
 
 app.listen(PORT, () => {
   console.log(PORT);
