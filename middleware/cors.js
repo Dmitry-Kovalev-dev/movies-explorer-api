@@ -2,8 +2,8 @@ const allowedCors = [
   'localhost:3006',
   'http://localhost:3006',
   'https://localhost:3006',
-  'http://films.nomoredomains.icu',
-  'https://films.nomoredomains.icu',
+  'http://films.nomoredomains.club',
+  'https://films.nomoredomains.club',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
