@@ -9,7 +9,7 @@ const router = require('./routes/index');
 const limiter = require('./utils/rateLimit');
 require('dotenv').config();
 
-const { PORT = 3005, MONGO_DB = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
+const { PORT = 3005, MONGO_DB = 'mongodb://127.0.0.1/bitfilmsdb' } = process.env;
 const app = express();
 mongoose.set('strictQuery', true);
 mongoose.connect(MONGO_DB, (err) => {
