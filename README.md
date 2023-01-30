@@ -1,6 +1,6 @@
 # Backend дипломного проекта Яндекс.Практикум
 
-(Ссылка на Frontend)[https://github.com/Dmitry-Kovalev-dev/movies-explorer-frontend/]
+[Ссылка на Frontend](https://github.com/Dmitry-Kovalev-dev/movies-explorer-frontend/)
 
 ### Используемые технологии backend части проекта
 Проект был написан с помощью:
